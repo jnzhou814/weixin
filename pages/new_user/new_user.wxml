@@ -1,0 +1,13 @@
+<!--pages/new_user/new_user.wxml-->
+<text>pages/new_user/new_user.wxml</text>
+<view>
+	<view >
+		<input class="submitt" focus placeholder="工号">工号</input>
+    <input class="submitt" focus placeholder="姓名">姓名</input>
+    <input class="submitt" focus placeholder="车间">车间</input>
+    <input class="submitt" focus placeholder="生产线">生产线</input>
+
+
+	</view>
+<button bindtap="zhuce">注册</button>
+</view>

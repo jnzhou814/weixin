@@ -1,0 +1,9 @@
+/* pages/new_user/new_user.wxss */
+.submitt{
+    background-color: rgba(128, 128, 128, 0.07);
+    height:50px;
+    margin-top: 10px;
+    width:70vw;
+    
+    text-align: left;
+}

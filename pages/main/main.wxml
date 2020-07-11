@@ -1,0 +1,7 @@
+<!--pages/main/main.wxml-->
+<text>pages/main/main.wxml</text>
+<view>
+
+
+<view class="buttom">buttom</view>
+</view>
