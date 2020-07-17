@@ -17,14 +17,15 @@ Page({
   },
   new_user_tap: function() {
     wx.navigateTo({
-      url: '../new_user/new_user'
+      url: '../register/register'
     })
   },
   denglu: function() {
     wx.navigateTo({
       url: '../main/main'
-    })
-  },
+    
+    
+  })},
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({

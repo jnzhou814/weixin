@@ -5,6 +5,10 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+    wx.cloud.init({
+      env:"pfe1p-wuzhihua",
+      traceUser:true
+    })
 
     // 登录
     wx.login({
