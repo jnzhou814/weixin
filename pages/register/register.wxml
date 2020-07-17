@@ -1,16 +1,18 @@
 <!--pages/new_user/new_user.wxml-->
-<text>pages/new_user/new_user.wxml</text>
-<view>
-	<view>
+<text>用户注册界面</text>
 
-		<input class="submitt" focus placeholder="车间" bindtap="inputchejian">车间</input>
-		<input class="submitt" focus placeholder="生产线" bindtap="inpuline">生产线</input>
-		<input class="submitt" focus placeholder="工号" bindtap="inputID">工号</input>
-		<input class="submitt" focus placeholder="姓名" bindtap="inputname">姓名</input>
-		<input class="submitt" focus placeholder="password" bindtap="inputpassword">密码</input>
+<form bindsubmit="formSubmit" bindreset="formReset">
+
+	<input name='chejian' placeholder="车间">车间</input>
+	<input name='line' placeholder="生产线">生产线</input>
+	<input name='user_id' placeholder="工号">工号</input>
+	<input name='user_name' placeholder="姓名" bindtap="inputname">姓名</input>
+	<input name='password' placeholder="password">密码</input>
 
 
 
-	</view>
-	<button bindtap="register">注册</button>
-</view>
+
+
+	<button form-type="submit">注册</button>
+	<button form-type="reset">重置</button>
+</form>

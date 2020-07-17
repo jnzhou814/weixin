@@ -15,57 +15,42 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {
-    chejian:chejian,
-    line:line,
-    user_ID:user_ID,
-    user_name:user_name,
-    user_password:user_password
+  data: {},
+//读取form里面的data，然后提交网络数据库
+  formSubmit: function (e) {
+    if (e.detail.value.chejian.length == 0 || e.detail.value.chejian.length >= 8) {
+      wx.showToast({
+        title: '车间不能为空或过长!',
+        icon: 'loading',
+        duration: 1500
+      })
+    } else {
+      userlistDB.add({
+        data: {
+          "chejian": e.detail.value.chejian,
+          "line": e.detail.value.line,
+          "user_ID": e.detail.value.user_id,
+          "user_name": e.detail.value.user_name,
+          "user_password": e.detail.value.password,
+        },
+        success: function () {
+          wx.navigateTo({
+            url: '../index/index'
+          })
+        }
+      })
+    }
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
 
   },
-  register: function () {
-    wx.navigateTo({
-      url: '../index/index',
-    })
-  },
-  inputchejian: function (e) {
-    chejian = e.detail.value;
-  },
-  inpuline: function (e) {
-    line = e.detail.value;
-  },
-  inputID: function (e) {
-    user_ID = e.detail.value;
-  },
-  inputname: function (e) {
-    user_name = e.detail.value
-  },
-  inputpassword: function (e) {
-    user_password = e.detail.value
-  },
+
+
   //注册
-  register() {
-    let that = this;
-    userlistDB.doc('_openid').set({
-      data: {
-        chejian: chejian,
-        line: line,
-        user_ID: user_ID,
-        user_name: user_name,
-        user_password: user_password
-      }
-    }).then(res => {
-      console.log('注册成功');
-    })
-    //查询用户是否已经注册
-    
-  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
