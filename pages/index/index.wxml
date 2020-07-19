@@ -1,22 +1,18 @@
-<!--index.wxml-->
+<!--pages/index/index.wxml-->
+<text>pages/index/index.wxml</text>
+
+
+<!-- 底部切换菜单 -->
+<view class="tab-bar">
+  <block wx:for="{{tabBar}}" wx:for-item="item" wx:key="index">
+    <view class="tab-item {{index==nowIndex?'active':''}}" bindtap="{{item.tapFunction}}">
+        <view class="{{item.iconClass}} icons"></view>
+        <text class="icon-text">{{item.text}}</text>
+    </view>
+  </block>
+</view>
+<!-- 页面容器 -->
 <view class="container">
-	<view class="userinfo">
-		<button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-		<block wx:else>
-			<image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-			<text class="userinfo-nickname">{{userInfo.nickName}}</text>
-		</block>
-	</view>
-	<view>
-		<view>
-			<input class="submitt" type="number" bindinput="inputname" placeholder="用户名">用户名</input>
-		</view>
-		<view>
-			<input class="submitt" type='text' bindinput="inputpasswpord" password placeholder="密码">密码</input>
-		</view>
-		<view >
-			<button bindtap="login" class="button">登录</button>
-		</view>
-    <view bindtap="new_user_tap" class="new_user">新用户注册</view>
-	</view>
+  <firstPage wx:if="{{nowPage=='firstPage'}}"></firstPage>
+  <secondPage wx:if="{{nowPage=='secondPage'}}"></secondPage>
 </view>

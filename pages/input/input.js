@@ -1,4 +1,4 @@
-// pages/main.js
+// pages/input/input.js
 Page({
 
   /**
@@ -6,6 +6,11 @@ Page({
    */
   data: {
 
+  },
+  nvToCaozuoshouce:function(){
+    wx.navigateTo({
+      url: '../kw1_caozuoshouce/kw1_caozuoshouce',
+    })
   },
 
   /**

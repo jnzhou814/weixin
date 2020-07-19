@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents":{
+    "firstPage":"../input/input",
+    "secondPage":"../charts/charts"
+  }
 }

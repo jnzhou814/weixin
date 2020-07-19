@@ -1,0 +1,12 @@
+/* pages/input/input.wxss */
+.types{
+  display: flex;
+  flex-direction: column;
+}
+
+.type_items{
+  display: flex;
+  margin-left: 20px;
+  margin-top:5px
+  
+}

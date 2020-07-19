@@ -1,11 +1,12 @@
 {
   "pages": [
+    "pages/denglu/denglu",
     "pages/index/index",
     "pages/logs/logs",
     "pages/register/register",
-    "pages/main/main",
     "pages/kw1_caozuoshouce/kw1_caozuoshouce",
-    "pages/main"
+    "pages/charts/charts",
+    "pages/input/input"
   ],
   "window": {
     "backgroundTextStyle": "light",

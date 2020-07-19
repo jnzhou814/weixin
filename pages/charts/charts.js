@@ -1,51 +1,11 @@
-// pages/main/main.js
+// pages/charts/charts.js
 Page({
 
   /**
    * 页面的初始数据
    */
-  data: { 
-    nowPage:"firstPage",
-    nowIndex:0,
-    tabBar:[
-      {
-        "iconClass":"iconfont icon-shouye",
-        "text":"第一页",
-        "tapFunction":"toFirst",
-        "active":"active"
-      },
-      {
-        "iconClass":"iconfont icon-wode",
-        "text":"第二页",
-        "tapFunction": "toSecond",
-        "active": ""
-      }
-    ]
-    
-  }
-    
-  ,
-  tabChange(e) {
-    console.log('tab change', e)
+  data: {
 
-  },
-  toFirst(){
-    this.setData({
-      nowPage:"firstPage",
-      nowIndex: 0
-    })
-  },
-  toSecond() {
-    this.setData({
-      nowPage: "secondPage",
-      nowIndex: 1
-    })
-  },
-
-  naviToInput:function(){
-wx.navigateTo({
-  url: '../charts/charts',
-})
   },
 
   /**
