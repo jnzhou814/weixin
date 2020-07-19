@@ -3,7 +3,7 @@
 	"packOptions": {
 		"ignore": []
 	},
-	"cloudfunctionRoot": "./functions/",
+	"cloudfunctionRoot": "functions/",
 	"setting": {
 		"urlCheck": true,
 		"es6": true,
@@ -28,7 +28,7 @@
 			"outputPath": ""
 		},
 		"useIsolateContext": true,
-		"useCompilerModule": true,
+		"useCompilerModule": false,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",

@@ -28,3 +28,8 @@
   margin-top: 10px;
   color: green;
 }
+
+.new_user{
+  margin-top: 20px;
+}
+

@@ -15,32 +15,86 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {},
-//读取form里面的data，然后提交网络数据库
+  data: {
+    multiArray: [
+      ['PFE1P', 'PFE3P', 'PFE1A', 'PFE3A', 'PFE', 'PFEE', 'PFEM'],
+      ["ZKG1", 'ZK1', 'KW1', 'PL1', 'AGW']
+    ],
+    multiIndex: [0, 0],
+  },
+  //读取form里面的data，然后提交网络数据库
   formSubmit: function (e) {
-    if (e.detail.value.chejian.length == 0 || e.detail.value.chejian.length >= 8) {
+    if (e.detail.value.user_id.length == 0 || e.detail.value.user_name.length >= 8) {
       wx.showToast({
         title: '车间不能为空或过长!',
+        icon: 'loading',
+        duration: 1500
+      })
+    } else if (e.detail.value.password != e.detail.value.password1) {
+      wx.showModal({
+        title: '两次密码不匹配!',
         icon: 'loading',
         duration: 1500
       })
     } else {
       userlistDB.add({
         data: {
-          "chejian": e.detail.value.chejian,
-          "line": e.detail.value.line,
-          "user_ID": e.detail.value.user_id,
+          "chejian": this.data.multiArray[0][this.data.multiIndex[0]],
+          "line": this.data.multiArray[1][this.data.multiIndex[1]],
+          "user_ID": Number(e.detail.value.user_id),
           "user_name": e.detail.value.user_name,
           "user_password": e.detail.value.password,
         },
         success: function () {
-          wx.navigateTo({
-            url: '../index/index'
+          //显示注册成功然后跳转到登录页面
+          wx.showToast({
+            title: '注册成功!',
+            duration: 1500,
+            success: function () {
+              setTimeout(function () {
+                wx.navigateTo({
+                  url: '../index/index'
+                })
+              }, 1000);
+            }
           })
         }
       })
     }
   },
+  bindMultiPickerColumnChange: function (e) {
+    var data = {
+      multiArray: this.data.multiArray,
+      multiIndex: this.data.multiIndex
+    };
+    data.multiIndex[e.detail.column] = e.detail.value;
+    switch (data.multiIndex[0]) {
+      case 0:
+        data.multiArray[1] = ["ZKG1", 'ZK1', 'KW1', 'PL1', 'AGW']
+        break
+      case 1:
+        data.multiArray[1] = ["ZKG3", 'ZK3', 'KW3', 'PL3']
+        break
+      case 2:
+        data.multiArray[1] = ['PFE1A']
+        break
+      case 3:
+        data.multiArray[1] = ["PFE3A"]
+        break
+      case 4:
+        data.multiArray[1] = ["PFE"]
+        break
+      case 5:
+        data.multiArray[1] = ["PFEE"]
+        break
+      case 6:
+        data.multiArray[1] = ["PFEM"]
+        break
+    }
+    this.setData(data)
+  },
+
+
   /**
    * 生命周期函数--监听页面加载
    */

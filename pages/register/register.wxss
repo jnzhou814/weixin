@@ -7,3 +7,31 @@
     
     text-align: left;
 }
+.register{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input{
+    border: 2px;
+    height: 40px;
+    margin: 10px;
+    width: 70vw;
+    background-color: aliceblue;
+
+}
+.button{
+    margin: 20px;
+}
+
+.picker{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aliceblue;
+    border: 2px;
+    height: 40px;
+    margin: 10px;
+    width: 70vw;
+}

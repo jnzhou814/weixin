@@ -1,71 +1,9 @@
 <!--pages/main/main.wxml-->
-<view class="headText">曲轴一线操作手册输入表
-</view>
-
-<view>
-
-
-	<form>
-		<!-- 选择工序 -->
-		<view>
-			<picker class="picker" bindchange="bindShebeiChange" value="{{index0}}" range="{{shebeiarray}}">
-				<view> 选择工序：{{shebeiarray[index0]}}</view>
-			</picker>
-		</view>
-
-		<view style="margin:10px">产量
-			<input class="textinput" type="digit" placeholder="输入产量"></input>
-		</view>
-
-		<!-- 选择日期 -->
-		<view>
-			<picker class="datapicker" mode="date" bindchange="bindDateChange">
-				<view >填表日期:{{date}}</view>
-			</picker>
-		</view>
-
-		<!-- 选择曲轴的型号 -->
-		<view>
-			<picker class="KwMode" bindchange="kwModeChange" value="{{index1}}" range="{{kwModearray}}">
-				<view >
-					选择轴型:{{kwModearray[index1]}}</view>
-			</picker>
-		</view>
-
-
-		<radio-group class="radio-group" wx:for="{{testarray}}">{{item}}
-			<label class="radio-left">正常
-				<radio value="" checked="{{true}}"></radio>
-			</label>
-			<label class="radio-right">异常
-				<radio value="" checked=""></radio>
-			</label>
-		</radio-group>
-
-		<radio-group class="radio-group">换型
-			<label class="radio-left">未换型
-				<radio value="" checked="{{true}}"></radio>
-			</label>
-			<label class="radio-right">换型
-				<radio value="" checked=""></radio>
-			</label>
-		</radio-group>
-
-
-		<!-- 故障描述 -->
-		<view class="guzhang">故障记录
-			<picker mode="time" bindchange="bindTimeChange">
-				<view class="timepicker">故障开始时间:{{time}}</view>
-			</picker>
-
-			<picker mode="time" bindchange="bindTimeChange1">
-				<view class="timepicker">故障结束:{{time1}}</view>
-			</picker>
-			<input class="guzhangInput" type="text" maxlength="10000" placeholder="请输入详细故障信息">输入故障详细</input>
-		</view>
-
-
-<button class="submitButton" type="primary" formType="submit">Submit</button>
-
-	</form>
+<text>pages/main/main.wxml</text>
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">Tabbar</view>
+        <view class="page__desc">自定义tabbar</view>
+    </view>
+    <mp-tabbar style="position:fixed;bottom:0;width:100%;left:0;right:0;" list="{{list}}" bindchange="tabChange"></mp-tabbar>
 </view>
