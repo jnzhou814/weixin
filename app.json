@@ -5,8 +5,10 @@
     "pages/logs/logs",
     "pages/register/register",
     "pages/kw1_caozuoshouce/kw1_caozuoshouce",
-    "pages/charts/charts",
-    "pages/input/input"
+    "pages/input/input",
+    "pages/line_data/line_data",
+    "pages/my_profile/my_profile",
+    "pages/report/report"
   ],
   "window": {
     "backgroundTextStyle": "light",

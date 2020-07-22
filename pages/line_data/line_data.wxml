@@ -1,0 +1,3 @@
+<!--pages/line_data/line_data.wxml-->
+<text>pages/line_data/line_data.wxml</text>
+<view>这里可以查看生产线的一些数据，如出勤公告、近期产量等</view>

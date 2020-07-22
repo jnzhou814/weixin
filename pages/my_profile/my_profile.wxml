@@ -1,0 +1,3 @@
+<!--pages/my_profile/my_profile.wxml-->
+<text>pages/my_profile/my_profile.wxml</text>
+<view>个人相关信息，可以修改密码，查看自己最近的输入</view>

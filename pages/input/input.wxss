@@ -2,11 +2,17 @@
 .types{
   display: flex;
   flex-direction: column;
+  background-color:gainsboro;
+  margin: 20px;
+  width: 80vw;
+  padding: 10px;
 }
 
 .type_items{
   display: flex;
   margin-left: 20px;
-  margin-top:5px
+  margin-top:5px;
+  font-style: italic;
+  
   
 }

@@ -1,6 +1,8 @@
 {
   "usingComponents":{
     "firstPage":"../input/input",
-    "secondPage":"../charts/charts"
+    "secondPage":"../report/report",
+    "thirdPage":"../line_data/line_data",
+    "forthPage":"../my_profile/my_profile"
   }
 }

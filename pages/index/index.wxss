@@ -7,12 +7,14 @@
   background-color: #fff;
   border-top:1px solid #C0BFC4;
   z-index:500;
+ 
 }
 .tab-bar .tab-item{
   float:left;
-  width: 50%;
+  width: 25%;
   text-align: center;
   padding-top:5px;
+ 
 }
 
 .tab-bar .tab-item .icons{
@@ -21,7 +23,7 @@
   font-weight:800;
 }
 .tab-bar .tab-item .icon-text{
-  font-size:10px;
+  font-size:16px;
   display: block;
   line-height:2.1;
   color:#808080;

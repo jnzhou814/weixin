@@ -15,4 +15,6 @@
 <view class="container">
   <firstPage wx:if="{{nowPage=='firstPage'}}"></firstPage>
   <secondPage wx:if="{{nowPage=='secondPage'}}"></secondPage>
+  <thirdPage wx:if="{{nowPage=='thirdPage'}}"></thirdPage>
+  <forthPage wx:if="{{nowPage=='forthPage'}}"></forthPage>
 </view>

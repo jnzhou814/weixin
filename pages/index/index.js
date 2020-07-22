@@ -10,14 +10,26 @@ Page({
     tabBar:[
       {
         "iconClass":"iconfont icon-shouye",
-        "text":"第一页",
-        "tapFunction":"toFirst",
+        "text":"记录输入",
+        "tapFunction":"toInput",
         "active":"active"
       },
       {
         "iconClass":"iconfont icon-wode",
-        "text":"第二页",
-        "tapFunction": "toSecond",
+        "text":"报告查看",
+        "tapFunction": "toReport",
+        "active": ""
+      },
+      {
+        "iconClass":"iconfont icon-wode",
+        "text":"产线数据",
+        "tapFunction": "toLineData",
+        "active": ""
+      },
+      {
+        "iconClass":"iconfont icon-wode",
+        "text":"我的",
+        "tapFunction": "toMyProfile",
         "active": ""
       }
     ]
@@ -29,16 +41,29 @@ Page({
     console.log('tab change', e)
 
   },
-  toFirst(){
+  toInput(){
     this.setData({
       nowPage:"firstPage",
       nowIndex: 0
     })
   },
-  toSecond() {
+  toReport() {
     this.setData({
       nowPage: "secondPage",
       nowIndex: 1
+    })
+  },
+  
+  toLineData() {
+    this.setData({
+      nowPage: "thirdPage",
+      nowIndex: 2
+    })
+  },
+  toMyProfile() {
+    this.setData({
+      nowPage: "forthPage",
+      nowIndex: 3
     })
   },
 
