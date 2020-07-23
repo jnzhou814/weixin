@@ -52,7 +52,7 @@
   background-color: rgba(220, 220, 220, 0.851);
   text-align: left;
   border: rebeccapurple;
-  margin: 2px;
+  margin-top: 10px;
 }
 
 .guzhang{
@@ -71,4 +71,16 @@
 
 .submitButton{
   text-align: center;
+  margin: 20px;
+}
+.on{
+  display: block;
+}
+
+.off{
+  display: none;
+}
+
+.AF160{
+  margin: 10px;
 }

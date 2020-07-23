@@ -52,7 +52,7 @@ Page({
       user_infoDB.where({user_ID:that.data.user_name}).get({
         success:function(res){
           if(that.data.user_password==res.data[0].user_password){
-           wx.navigateTo({
+           wx.redirectTo({
              url: '../index/index',
            })
           }

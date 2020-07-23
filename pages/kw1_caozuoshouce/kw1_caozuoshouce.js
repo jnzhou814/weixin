@@ -10,7 +10,8 @@ Page({
     index0: 0,
     index1: 0,
     switch: true,
-    testarray:['安全及5S','质量状况','设备和能源','检具状态','换刀状态']
+    testarray: ['安全及5S', '质量状况', '设备和能源', '检具状态', '换刀状态'],
+    replay: false
   },
 
   /**
@@ -70,7 +71,15 @@ Page({
   },
   bindShebeiChange: function (e) {
     console.log('选择工序', e.detail.value)
-
+    if (e.detail.value == 18) {
+      this.setData({
+        AF160_switch: true
+      })
+    } else {
+      this.setData({
+        AF160_switch: false
+      })
+    }
     this.setData({
       index0: e.detail.value
     })
@@ -82,10 +91,9 @@ Page({
       index2: e.detail.value
     })
   },
-  radioChange:function(e){
+  radioChange: function (e) {
     this.setData()
-  }
-  ,
+  },
   kwModeChange: function (e) {
     console.log('改变轴型', e.detail.value)
     this.setData({

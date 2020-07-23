@@ -20,14 +20,14 @@
 		<!-- 选择日期 -->
 		<view>
 			<picker class="datapicker" mode="date" bindchange="bindDateChange">
-				<view >填表日期:{{date}}</view>
+				<view>填表日期:{{date}}</view>
 			</picker>
 		</view>
 
 		<!-- 选择曲轴的型号 -->
 		<view>
 			<picker class="KwMode" bindchange="kwModeChange" value="{{index1}}" range="{{kwModearray}}">
-				<view >
+				<view>
 					选择轴型:{{kwModearray[index1]}}</view>
 			</picker>
 		</view>
@@ -51,6 +51,17 @@
 			</label>
 		</radio-group>
 
+		<view class="AF160 {{AF160_switch?'on':'off'}}">
+			<view>清洗液、滤芯更换记录</view>
+			<label>
+				<checkbox>更换滤芯</checkbox>
+			</label>
+			<label>
+				<checkbox>更换清洗液</checkbox>
+			</label>
+			<input placeholder="输入备注"></input>
+		</view>
+
 
 		<!-- 故障描述 -->
 		<view class="guzhang">故障记录
@@ -64,8 +75,19 @@
 			<input class="guzhangInput" type="text" maxlength="10000" placeholder="请输入详细故障信息">输入故障详细</input>
 		</view>
 
+		<view class="guzhang">故障记录
+			<picker mode="time" bindchange="bindTimeChange">
+				<view class="timepicker">故障开始时间:{{time}}</view>
+			</picker>
 
-<button class="submitButton" type="primary" formType="submit">Submit</button>
+			<picker mode="time" bindchange="bindTimeChange1">
+				<view class="timepicker">故障结束:{{time1}}</view>
+			</picker>
+			<input class="guzhangInput" type="text" maxlength="10000" placeholder="请输入详细故障信息">输入故障详细</input>
+		</view>
+
+
+		<button class="submitButton" type="primary" formType="submit">Submit</button>
 
 	</form>
 </view>

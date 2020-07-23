@@ -4,7 +4,7 @@
   bottom:0;
   left:0;
   width:100%;
-  background-color: rgb(238, 242, 37);
+  background-color: rgba(231, 231, 231, 0.555);
   border-top:1px solid #C0BFC4;
   z-index:500;
  
@@ -24,16 +24,17 @@
 }
 .tab-bar .tab-item .icons{
   display: block;
-  width: 10vw;
+  width: 8vw;
   display: flex;
   justify-content: space-around;
+  margin-bottom: 5px;
 }
 .tab-bar .tab-item .icon-text{
-  font-size:16px;
+  font-size:14px;
   display: block;
-  line-height:2.1;
+  line-height:1.1;
   color:#808080;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 .tab-bar .active .icons{
   color:#09BB07;

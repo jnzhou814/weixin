@@ -6,7 +6,7 @@
 <view class="tab-bar">
 	<block wx:for="{{tabBar}}" wx:for-item="item" wx:key="index">
 		<cover-view class="tab-item {{index==nowIndex?'active':''}}" bindtap="{{item.tapFunction}}">
-			<view class="view">
+			<cover-view class="view">
 				<block wx:if="{{index==nowIndex}}">
 					<cover-image class="icons" src="{{item.iconClass_active}}" mode="widthFix">
 					</cover-image>
@@ -15,9 +15,9 @@
 				<block wx:elif="{{index!==nowIndex}}">
 					<cover-image class="icons" src="{{item.iconClass}}" mode="widthFix"></cover-image>
 				</block>
-			</view>
+			</cover-view>
 
-			<text class="icon-text">{{item.text}}</text>
+			<cover-view class="icon-text">{{item.text}}</cover-view>
 		</cover-view>
 	</block>
 </view>
