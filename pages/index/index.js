@@ -4,46 +4,49 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: { 
-    nowPage:"firstPage",
-    nowIndex:0,
-    tabBar:[
-      {
-        "iconClass":"iconfont icon-shouye",
-        "text":"记录输入",
-        "tapFunction":"toInput",
-        "active":"active"
+  data: {
+    nowPage: "firstPage",
+    nowIndex: 0,
+    tabBar: [{
+        "iconClass": "../../picture/input.png",
+        "iconClass_active": "../../picture/input_active.png",
+        "text": "记录输入",
+        "tapFunction": "toInput",
+        "active": "active"
       },
       {
-        "iconClass":"iconfont icon-wode",
-        "text":"报告查看",
+        "iconClass": "../../picture/report.png",
+        "iconClass_active": "../../picture/report_active.png",
+        "text": "报告查看",
         "tapFunction": "toReport",
         "active": ""
       },
       {
-        "iconClass":"iconfont icon-wode",
-        "text":"产线数据",
+        "iconClass": "../../picture/chart.png",
+        "iconClass_active": "../../picture/chart_active.png",
+        "text": "产线数据",
         "tapFunction": "toLineData",
         "active": ""
       },
       {
-        "iconClass":"iconfont icon-wode",
-        "text":"我的",
+        "iconClass": "../../picture/my.png",
+        "iconClass_active": "../../picture/my_active.png",
+        "text": "我的",
         "tapFunction": "toMyProfile",
         "active": ""
       }
     ]
-    
+
   }
-    
+
   ,
   tabChange(e) {
     console.log('tab change', e)
 
   },
-  toInput(){
+  toInput() {
     this.setData({
-      nowPage:"firstPage",
+      nowPage: "firstPage",
       nowIndex: 0
     })
   },
@@ -53,7 +56,7 @@ Page({
       nowIndex: 1
     })
   },
-  
+
   toLineData() {
     this.setData({
       nowPage: "thirdPage",
@@ -67,11 +70,7 @@ Page({
     })
   },
 
-  naviToInput:function(){
-wx.navigateTo({
-  url: '../charts/charts',
-})
-  },
+  
 
   /**
    * 生命周期函数--监听页面加载

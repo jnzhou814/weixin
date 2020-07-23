@@ -4,17 +4,27 @@
 
 <!-- 底部切换菜单 -->
 <view class="tab-bar">
-  <block wx:for="{{tabBar}}" wx:for-item="item" wx:key="index">
-    <view class="tab-item {{index==nowIndex?'active':''}}" bindtap="{{item.tapFunction}}">
-        <view class="{{item.iconClass}} icons"></view>
-        <text class="icon-text">{{item.text}}</text>
-    </view>
-  </block>
+	<block wx:for="{{tabBar}}" wx:for-item="item" wx:key="index">
+		<cover-view class="tab-item {{index==nowIndex?'active':''}}" bindtap="{{item.tapFunction}}">
+			<view class="view">
+				<block wx:if="{{index==nowIndex}}">
+					<cover-image class="icons" src="{{item.iconClass_active}}" mode="widthFix">
+					</cover-image>
+				</block>
+
+				<block wx:elif="{{index!==nowIndex}}">
+					<cover-image class="icons" src="{{item.iconClass}}" mode="widthFix"></cover-image>
+				</block>
+			</view>
+
+			<text class="icon-text">{{item.text}}</text>
+		</cover-view>
+	</block>
 </view>
 <!-- 页面容器 -->
 <view class="container">
-  <firstPage wx:if="{{nowPage=='firstPage'}}"></firstPage>
-  <secondPage wx:if="{{nowPage=='secondPage'}}"></secondPage>
-  <thirdPage wx:if="{{nowPage=='thirdPage'}}"></thirdPage>
-  <forthPage wx:if="{{nowPage=='forthPage'}}"></forthPage>
+	<firstPage wx:if="{{nowPage=='firstPage'}}"></firstPage>
+	<secondPage wx:if="{{nowPage=='secondPage'}}"></secondPage>
+	<thirdPage wx:if="{{nowPage=='thirdPage'}}"></thirdPage>
+	<forthPage wx:if="{{nowPage=='forthPage'}}"></forthPage>
 </view>
