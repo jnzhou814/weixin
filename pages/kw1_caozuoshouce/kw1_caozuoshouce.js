@@ -10,7 +10,27 @@ Page({
     index0: 0,
     index1: 0,
     switch: true,
-    testarray: ['安全及5S', '质量状况', '设备和能源', '检具状态', '换刀状态'],
+    testarray: [{
+      'id': 0,
+      'name': "安全及5S",
+      'status': 'true'
+    }, {
+      'id': 1,
+      'name': "质量状况",
+      'status': 'true'
+    }, {
+      'id': 2,
+      'name': "设备和能源",
+      'status': 'true'
+    }, {
+      'id': 3,
+      'name': "检具状态",
+      'status': 'true'
+    }, {
+      'id': 4,
+      'name': "换刀状态",
+      'status': 'true'
+    }],
     replay: false
   },
 
@@ -92,7 +112,12 @@ Page({
     })
   },
   radioChange: function (e) {
-    this.setData()
+   
+      this.setData({
+      }
+      )
+    console.log(e.detail.value)
+    console.log(e.detail.id)
   },
   kwModeChange: function (e) {
     console.log('改变轴型', e.detail.value)

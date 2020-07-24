@@ -33,12 +33,12 @@
 		</view>
 
 
-		<radio-group class="radio-group" wx:for="{{testarray}}">{{item}}
+		<radio-group bindchange="radioChange" class="radio-group" wx:for="{{testarray}}"wx:key="id">{{item.name}}
 			<label class="radio-left">正常
-				<radio value="" checked="{{true}}"></radio>
+				<radio value="true" checked="true"></radio>
 			</label>
 			<label class="radio-right">异常
-				<radio value="" checked=""></radio>
+				<radio value="false" checked=""></radio>
 			</label>
 		</radio-group>
 
