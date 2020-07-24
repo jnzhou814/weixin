@@ -1,4 +1,8 @@
 // pages/main/main.js
+let app = getApp()
+const db = wx.cloud.database()
+const kw1_caozuoshouceDB = db.collection('kw1_caozuoshouce')
+
 Page({
 
   /**
@@ -9,6 +13,8 @@ Page({
     kwModearray: ["Gen3 1.8T", "Gen3 2.0T", "Gen3 BZ"],
     index0: 0,
     index1: 0,
+    index2: 0,
+    index3:0,
     switch: true,
     testarray: [{
       'id': 0,
@@ -111,11 +117,16 @@ Page({
       index2: e.detail.value
     })
   },
+  guzhangshebei2: function (e) {
+    console.log('选择工序', e.detail.value)
+
+    this.setData({
+      index3: e.detail.value
+    })
+  },
   radioChange: function (e) {
-   
-      this.setData({
-      }
-      )
+
+    this.setData({})
     console.log(e.detail.value)
     console.log(e.detail.id)
   },
@@ -145,5 +156,20 @@ Page({
     this.setData({
       time1: e.detail.value
     })
+  },
+  bindTimeChange2: function (e) {
+    console.log('时间选择', e.detail.value)
+    this.setData({
+      time2: e.detail.value
+    })
+  },
+  bindTimeChange3: function (e) {
+    console.log('时间选择', e.detail.value)
+    this.setData({
+      time3: e.detail.value
+    })
+  },
+  caozuoshocesubmit:function(e){
+
   }
 })

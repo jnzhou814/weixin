@@ -24,9 +24,9 @@ Page({
   },
   //读取form里面的data，然后提交网络数据库
   formSubmit: function (e) {
-    if (e.detail.value.user_id.length == 0 || e.detail.value.user_name.length >= 8) {
-      wx.showToast({
-        title: '车间不能为空或过长!',
+    if (e.detail.value.user_id.length == 0 || e.detail.value.user_name.length == 0) {
+      wx.showModal({
+        title: '工号不能为空',
         icon: 'loading',
         duration: 1500
       })

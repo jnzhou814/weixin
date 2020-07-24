@@ -5,7 +5,7 @@
 <view>
 
 
-	<form>
+	<form bindsubmit="caozuoshocesubmit">
 		<!-- 选择工序 -->
 		<view>
 			<picker class="picker" bindchange="bindShebeiChange" value="{{index0}}" range="{{shebeiarray}}">
@@ -33,7 +33,7 @@
 		</view>
 
 
-		<radio-group bindchange="radioChange" class="radio-group" wx:for="{{testarray}}"wx:key="id">{{item.name}}
+		<radio-group bindchange="radioChange" class="radio-group" wx:for="{{testarray}}" wx:key="id">{{item.name}}
 			<label class="radio-left">正常
 				<radio value="true" checked="true"></radio>
 			</label>
@@ -64,24 +64,37 @@
 
 
 		<!-- 故障描述 -->
-		<view class="guzhang">故障记录
+		<view class="guzhang">故障记录1
+
+			<view>
+				<picker class="picker" bindchange="guzhangshebei1" value="{{index2}}" range="{{shebeiarray}}">
+					<view> 故障设备：{{shebeiarray[index2]}}</view>
+				</picker>
+			</view>
+
 			<picker mode="time" bindchange="bindTimeChange">
 				<view class="timepicker">故障开始时间:{{time}}</view>
 			</picker>
 
 			<picker mode="time" bindchange="bindTimeChange1">
-				<view class="timepicker">故障结束:{{time1}}</view>
+				<view class="timepicker">故障结束时间:{{time1}}</view>
 			</picker>
 			<input class="guzhangInput" type="text" maxlength="10000" placeholder="请输入详细故障信息">输入故障详细</input>
 		</view>
 
-		<view class="guzhang">故障记录
-			<picker mode="time" bindchange="bindTimeChange">
-				<view class="timepicker">故障开始时间:{{time}}</view>
+		<view class="guzhang">故障记录2
+			<view>
+				<picker class="picker" bindchange="guzhangshebei2" value="{{index3}}" range="{{shebeiarray}}">
+					<view> 故障设备：{{shebeiarray[index3]}}</view>
+				</picker>
+			</view>
+
+			<picker mode="time" bindchange="bindTimeChange2">
+				<view class="timepicker">故障开始时间:{{time2}}</view>
 			</picker>
 
-			<picker mode="time" bindchange="bindTimeChange1">
-				<view class="timepicker">故障结束:{{time1}}</view>
+			<picker mode="time" bindchange="bindTimeChange3">
+				<view class="timepicker">故障结束时间:{{time3}}</view>
 			</picker>
 			<input class="guzhangInput" type="text" maxlength="10000" placeholder="请输入详细故障信息">输入故障详细</input>
 		</view>
