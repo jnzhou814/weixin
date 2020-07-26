@@ -35,10 +35,10 @@
 
 		<radio-group bindchange="radioChange" class="radio-group" wx:for="{{testarray}}" wx:key="id">{{item.name}}
 			<label class="radio-left">正常
-				<radio value="true" checked="true"></radio>
+				<radio value="{{item.id}},true" checked="true"></radio>
 			</label>
 			<label class="radio-right">异常
-				<radio value="false" checked=""></radio>
+				<radio value="{{item.id}},false" checked=""></radio>
 			</label>
 		</radio-group>
 

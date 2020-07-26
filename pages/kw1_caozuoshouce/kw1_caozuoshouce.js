@@ -11,11 +11,15 @@ Page({
   data: {
     shebeiarray: ['AF10', 'AF20A', 'AF20B', 'AF20C', 'AF30A', 'AF40B', 'AF40', 'AF60', 'AF70', 'AF80', 'AF90A', 'AF90B', 'AF90C', 'AF100', 'AF110', 'AF130', 'AF140', 'AF150', 'AF160', 'AF170'],
     kwModearray: ["Gen3 1.8T", "Gen3 2.0T", "Gen3 BZ"],
+    // index0是工序选择的index
     index0: 0,
+    //index1是选择轴型
     index1: 0,
+    //index2是第一个故障设备
     index2: 0,
-    index3:0,
-    switch: true,
+    //index3是第二个故障设备
+    index3: 0,
+    AF160_switch: true,
     testarray: [{
       'id': 0,
       'name': "安全及5S",
@@ -124,11 +128,21 @@ Page({
       index3: e.detail.value
     })
   },
+  /*将界面的值取回，包含index和值，并且赋值给数组，便于后面取值提交数据库*/
   radioChange: function (e) {
-
-    this.setData({})
+    const id = e.detail.value
+    let testarray = this.data.testarray
+    let index = id.split(",")[0]
+    let status = id.split(",")[1]
+    testarray[index].status = status
+    this.setData({
+      testarray
+    })
     console.log(e.detail.value)
-    console.log(e.detail.id)
+    console.log(index)
+    console.log(status)
+    console.log(testarray[index])
+
   },
   kwModeChange: function (e) {
     console.log('改变轴型', e.detail.value)
@@ -169,7 +183,7 @@ Page({
       time3: e.detail.value
     })
   },
-  caozuoshocesubmit:function(e){
+  caozuoshocesubmit: function (e) {
 
   }
 })
