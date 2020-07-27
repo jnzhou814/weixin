@@ -53,7 +53,7 @@ Page({
             success: function () {
               setTimeout(function () {
                 wx.navigateTo({
-                  url: '../index/index'
+                  url: '../denglu/denglu'
                 })
               }, 1000);
             }

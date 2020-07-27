@@ -2,6 +2,9 @@
 let app = getApp()
 const db = wx.cloud.database()
 const kw1_caozuoshouceDB = db.collection('kw1_caozuoshouce')
+let 工序=null
+let 产量=null
+let 日期=null
 
 Page({
 
@@ -11,6 +14,8 @@ Page({
   data: {
     shebeiarray: ['AF10', 'AF20A', 'AF20B', 'AF20C', 'AF30A', 'AF40B', 'AF40', 'AF60', 'AF70', 'AF80', 'AF90A', 'AF90B', 'AF90C', 'AF100', 'AF110', 'AF130', 'AF140', 'AF150', 'AF160', 'AF170'],
     kwModearray: ["Gen3 1.8T", "Gen3 2.0T", "Gen3 BZ"],
+    chanliang: 0,
+    data:0,
     // index0是工序选择的index
     index0: 0,
     //index1是选择轴型
@@ -50,7 +55,11 @@ Page({
   onLoad: function (options) {
 
   },
-
+  chanliangInput: function (e) {
+    this.setData({
+      chanliang:e.detail.value
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -184,6 +193,16 @@ Page({
     })
   },
   caozuoshocesubmit: function (e) {
+    kw1_caozuoshouceDB.add({
+      data: {
+        "工序": this.data.shebeiarray[this.data.index0],
+        "产量":this.data.chanliang,
+        "日期":this.data.data,
+      }
+
+    })
+
+
 
   }
 })

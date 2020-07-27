@@ -14,7 +14,7 @@
 		</view>
 
 		<view style="margin:10px">产量
-			<input class="textinput" type="digit" placeholder="输入产量"></input>
+			<input bindinput="chanliangInput" class="textinput" type="digit" placeholder="输入产量"></input>
 		</view>
 
 		<!-- 选择日期 -->
