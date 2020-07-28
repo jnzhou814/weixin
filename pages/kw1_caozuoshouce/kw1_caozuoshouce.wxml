@@ -20,7 +20,7 @@
 		<!-- 选择日期 -->
 		<view>
 			<picker class="datapicker" mode="date" bindchange="bindDateChange">
-				<view>填表日期:{{date}}</view>
+				<view>填表日期:{{DateTime}}</view>
 			</picker>
 		</view>
 
@@ -42,12 +42,12 @@
 			</label>
 		</radio-group>
 
-		<radio-group class="radio-group">换型
+		<radio-group bindchange="changemode" class="radio-group">换型
 			<label class="radio-left">未换型
-				<radio value="" checked="{{true}}"></radio>
+				<radio value="未换型" checked="{{true}}"></radio>
 			</label>
 			<label class="radio-right">换型
-				<radio value="" checked=""></radio>
+				<radio value="换型" checked=""></radio>
 			</label>
 		</radio-group>
 
@@ -66,11 +66,7 @@
 		<!-- 故障描述 -->
 		<view class="guzhang">故障记录1
 
-			<view>
-				<picker class="picker" bindchange="guzhangshebei1" value="{{index2}}" range="{{shebeiarray}}">
-					<view> 故障设备：{{shebeiarray[index2]}}</view>
-				</picker>
-			</view>
+	
 
 			<picker mode="time" bindchange="bindTimeChange">
 				<view class="timepicker">故障开始时间:{{time}}</view>
@@ -83,11 +79,7 @@
 		</view>
 
 		<view class="guzhang">故障记录2
-			<view>
-				<picker class="picker" bindchange="guzhangshebei2" value="{{index3}}" range="{{shebeiarray}}">
-					<view> 故障设备：{{shebeiarray[index3]}}</view>
-				</picker>
-			</view>
+
 
 			<picker mode="time" bindchange="bindTimeChange2">
 				<view class="timepicker">故障开始时间:{{time2}}</view>

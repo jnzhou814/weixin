@@ -2,9 +2,9 @@
 let app = getApp()
 const db = wx.cloud.database()
 const kw1_caozuoshouceDB = db.collection('kw1_caozuoshouce')
-let 工序=null
-let 产量=null
-let 日期=null
+let 工序 = null
+let 产量 = null
+let 日期 = null
 
 Page({
 
@@ -15,16 +15,15 @@ Page({
     shebeiarray: ['AF10', 'AF20A', 'AF20B', 'AF20C', 'AF30A', 'AF40B', 'AF40', 'AF60', 'AF70', 'AF80', 'AF90A', 'AF90B', 'AF90C', 'AF100', 'AF110', 'AF130', 'AF140', 'AF150', 'AF160', 'AF170'],
     kwModearray: ["Gen3 1.8T", "Gen3 2.0T", "Gen3 BZ"],
     chanliang: 0,
-    data:0,
+    DateTime: 0,
     // index0是工序选择的index
     index0: 0,
     //index1是选择轴型
     index1: 0,
-    //index2是第一个故障设备
-    index2: 0,
-    //index3是第二个故障设备
-    index3: 0,
-    AF160_switch: true,
+    huanxing_status: false,
+
+
+    AF160_switch: false,
     testarray: [{
       'id': 0,
       'name': "安全及5S",
@@ -45,8 +44,8 @@ Page({
       'id': 4,
       'name': "换刀状态",
       'status': 'true'
-    }],
-    replay: false
+    }]
+
   },
 
   /**
@@ -57,7 +56,12 @@ Page({
   },
   chanliangInput: function (e) {
     this.setData({
-      chanliang:e.detail.value
+      chanliang: e.detail.value
+    })
+  },
+  changemode: function (e) {
+    this.setData({
+      huanxing_status: e.detail.value
     })
   },
   /**
@@ -165,7 +169,7 @@ Page({
   bindDateChange: function (e) {
     console.log('日期选择', e.detail.value)
     this.setData({
-      date: e.detail.value
+      DateTime: e.detail.value
     })
   },
   bindTimeChange: function (e) {
@@ -196,8 +200,28 @@ Page({
     kw1_caozuoshouceDB.add({
       data: {
         "工序": this.data.shebeiarray[this.data.index0],
-        "产量":this.data.chanliang,
-        "日期":this.data.data,
+        "产量": this.data.chanliang,
+        "日期": (this.data.DateTime),
+        "轴型": this.data.kwModearray[this.data.index1],
+        "安全及5S": this.data.testarray[0]["status"],
+        "质量状况": this.data.testarray[1]["status"],
+        "设备和能源": this.data.testarray[2]["status"],
+        "换刀状态": this.data.testarray[3]["status"],
+        "换型状态": this.data.huanxing_status,
+      },
+      success: function () {
+        //提交成功然后跳转到主界面
+        wx.showToast({
+          title: '提交成功!',
+          duration: 1500,
+          success: function () {
+            setTimeout(function () {
+              wx.navigateTo({
+                url: '../index/index'
+              })
+            }, 1000);
+          }
+        })
       }
 
     })
