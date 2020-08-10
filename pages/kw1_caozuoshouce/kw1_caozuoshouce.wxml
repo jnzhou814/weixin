@@ -66,33 +66,35 @@
 		<!-- 故障描述 -->
 		<view class="guzhang">故障记录1
 
-	
 
-			<picker mode="time" bindchange="bindTimeChange">
-				<view class="timepicker">故障开始时间:{{time}}</view>
+
+			<picker mode="time" bindchange="fault1_start_time_picker">
+				<view class="timepicker">故障开始时间:{{fault1_start_time}}</view>
 			</picker>
 
-			<picker mode="time" bindchange="bindTimeChange1">
-				<view class="timepicker">故障结束时间:{{time1}}</view>
+			<picker mode="time" bindchange="fault1_end_time_picker">
+				<view class="timepicker">故障结束时间:{{fault1_end_time}}</view>
 			</picker>
-			<input class="guzhangInput" type="text" maxlength="10000" placeholder="请输入详细故障信息">输入故障详细</input>
+			<input class="guzhangInput" type="text" maxlength="10000" bindinput="fault1_input" placeholder="请输入详细故障信息">{{fault1_detail}}</input>
 		</view>
 
 		<view class="guzhang">故障记录2
 
 
-			<picker mode="time" bindchange="bindTimeChange2">
-				<view class="timepicker">故障开始时间:{{time2}}</view>
+			<picker mode="time" bindchange="fault2_start_time_picker">
+				<view class="timepicker">故障开始时间:{{fault2_start_time}}</view>
 			</picker>
 
-			<picker mode="time" bindchange="bindTimeChange3">
-				<view class="timepicker">故障结束时间:{{time3}}</view>
+			<picker mode="time" bindchange="fault2_end_time_picker">
+				<view class="timepicker">故障结束时间:{{fault2_end_time}}</view>
 			</picker>
-			<input class="guzhangInput" type="text" maxlength="10000" placeholder="请输入详细故障信息">输入故障详细</input>
+			<input class="guzhangInput" type="text" maxlength="10000" bindinput="fault2_input" placeholder="请输入详细故障信息">{{fault2_detail}}</input>
 		</view>
 
+		<button class="submitButton" type="primary" bindtap="Local_storage">本地存储</button>
 
-		<button class="submitButton" type="primary" formType="submit">Submit</button>
+
+		<button class="submitButton" type="primary" formType="submit">提交</button>
 
 	</form>
 </view>

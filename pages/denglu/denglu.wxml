@@ -10,7 +10,7 @@
 	<view>
 
 		<view>
-			<input class="submitt" type="number" bindinput="inputname" placeholder="用户名">用户名</input>
+			<input class="submitt" type="number" bindinput="inputname" placeholder="工号">用户名</input>
 		</view>
 		<view>
 			<input class="submitt" type='text' bindinput="inputpasswpord" password placeholder="密码">密码</input>

@@ -1,7 +1,7 @@
 // pages/new_user/new_user.js
 let app = getApp()
 const db = wx.cloud.database()
-const userlistDB = db.collection('user_info')
+const userlistDB = db.collection('kw1_user_info')
 
 let chejian = null
 let line = null
@@ -41,7 +41,7 @@ Page({
         data: {
           "chejian": this.data.multiArray[0][this.data.multiIndex[0]],
           "line": this.data.multiArray[1][this.data.multiIndex[1]],
-          "user_ID": Number(e.detail.value.user_id),
+          "user_ID": (e.detail.value.user_id),
           "user_name": e.detail.value.user_name,
           "user_password": e.detail.value.password,
         },

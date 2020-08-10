@@ -14,13 +14,19 @@ Page({
   data: {
     shebeiarray: ['AF10', 'AF20A', 'AF20B', 'AF20C', 'AF30A', 'AF40B', 'AF40', 'AF60', 'AF70', 'AF80', 'AF90A', 'AF90B', 'AF90C', 'AF100', 'AF110', 'AF130', 'AF140', 'AF150', 'AF160', 'AF170'],
     kwModearray: ["Gen3 1.8T", "Gen3 2.0T", "Gen3 BZ"],
-    chanliang: 0,
-    DateTime: 0,
+    chanliang: "",
+    DateTime: "",
     // index0是工序选择的index
     index0: 0,
     //index1是选择轴型
     index1: 0,
     huanxing_status: false,
+    fault1_start_time:"",
+    fault1_end_time:"",
+    fault1_detail:"",
+    fault2_start_time:"",
+    fault2_end_time:"",
+    fault2_detail:"",
 
 
     AF160_switch: false,
@@ -172,42 +178,60 @@ Page({
       DateTime: e.detail.value
     })
   },
-  bindTimeChange: function (e) {
+  fault1_start_time_picker: function (e) {
     console.log('时间选择', e.detail.value)
     this.setData({
-      time: e.detail.value
+      fault1_start_time: e.detail.value
     })
   },
-  bindTimeChange1: function (e) {
+  fault1_end_time_picker: function (e) {
     console.log('时间选择', e.detail.value)
     this.setData({
-      time1: e.detail.value
+      fault1_end_time: e.detail.value
     })
   },
-  bindTimeChange2: function (e) {
+  fault1_input:function(e){
+    this.setData({
+      fault1_detail:e.detail.value
+    })
+  }
+  ,
+  fault2_start_time_picker: function (e) {
     console.log('时间选择', e.detail.value)
     this.setData({
-      time2: e.detail.value
+      fault2_start_time: e.detail.value
     })
   },
-  bindTimeChange3: function (e) {
+  fault2_end_time_picker: function (e) {
     console.log('时间选择', e.detail.value)
     this.setData({
-      time3: e.detail.value
+      fault2_end_time: e.detail.value
     })
   },
+  fault2_input:function(e){
+    this.setData({
+      fault2_detail:e.detail.value
+    })
+  }
+  ,
   caozuoshocesubmit: function (e) {
     kw1_caozuoshouceDB.add({
       data: {
         "工序": this.data.shebeiarray[this.data.index0],
-        "产量": this.data.chanliang,
-        "日期": (this.data.DateTime),
+        "产量": Number(this.data.chanliang),
+        "日期": Date(this.data.DateTime),
         "轴型": this.data.kwModearray[this.data.index1],
         "安全及5S": this.data.testarray[0]["status"],
         "质量状况": this.data.testarray[1]["status"],
         "设备和能源": this.data.testarray[2]["status"],
         "换刀状态": this.data.testarray[3]["status"],
         "换型状态": this.data.huanxing_status,
+        "故障1开始时间":(this.data.fault1_start_time),
+        "故障1结束时间":this.data.fault1_end_time,
+        "故障1详情":this.data.fault1_detail,
+        "故障2开始时间":this.data.fault2_start_time,
+        "故障2结束时间":this.data.fault2_end_time,
+        "故障2详情":this.data.fault2_detail,
       },
       success: function () {
         //提交成功然后跳转到主界面

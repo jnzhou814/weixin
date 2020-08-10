@@ -2,17 +2,16 @@
 //获取应用实例
 let app = getApp()
 const db = wx.cloud.database()
-const user_infoDB = db.collection("user_info")
-let inputname = null
-let inputpasswpord = null
+const user_infoDB = db.collection("kw1_user_info")
+
 Page({
   data: {
     motto: '登录',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    user_name: '',
-    user_password: ''
+    user_ID_local: "",
+    user_password_local: ""
   },
   //事件处理函数
   bindViewTap: function () {
@@ -28,38 +27,41 @@ Page({
   //获取输入框用户名
   inputname: function (e) {
     this.setData({
-      user_name: e.detail.value
-
+      user_ID_local: e.detail.value
     })
 
   },
   //获取输入框的密码
   inputpasswpord: function (e) {
     this.setData({
-      user_password: e.detail.value
+      user_password_local: e.detail.value
     })
   },
-  login: function (e) {
-    var that =this
-    console.log(this.data.user_name)
-    console.log(this.data.user_password)
-    if(this.data.user_name.length==0||this.data.user_password.length==0){
+  login: function (a) {
+    var that = this
+    console.log(this.data.user_ID_local)
+    console.log(this.data.user_password_local)
+    if (this.data.user_ID_local.length == 0 || this.data.user_password_local.length == 0) {
       wx.showModal({
         title: '提示',
-        content:'用户密码不能为空'
+        content: '用户密码不能为空'
       })
-    }else{
-      user_infoDB.where({user_ID:that.data.user_name}).get({
-        success:function(res){
-          if(that.data.user_password==res.data[0].user_password){
-           wx.redirectTo({
-             url: '../index/index',
-           })
-          }
-          else{
+    } else {
+      user_infoDB.where({
+        user_ID: that.data.user_ID_local
+      }).get({
+        success: function (res) {
+          if (that.data.user_password_local == res.data[0].user_password) {
+            wx.redirectTo({
+              url: '../index/index',
+            })
+          } else {
+            console.log(user_infoDB.where({
+              user_ID: that.data.user_ID_local
+            }))
             wx.showModal({
               title: '密码错误',
-              content:"密码错误"
+              content: "密码错误"
             });
           }
         }
