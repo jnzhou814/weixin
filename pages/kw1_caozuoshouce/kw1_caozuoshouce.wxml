@@ -14,7 +14,7 @@
 		</view>
 
 		<view style="margin:10px">产量
-			<input bindinput="chanliangInput" class="textinput" type="digit" placeholder="输入产量"></input>
+			<input bindinput="chanliangInput" class="textinput" type="digit" value="{{chanliang}}"></input>
 		</view>
 
 		<!-- 选择日期 -->
@@ -75,7 +75,7 @@
 			<picker mode="time" bindchange="fault1_end_time_picker">
 				<view class="timepicker">故障结束时间:{{fault1_end_time}}</view>
 			</picker>
-			<input class="guzhangInput" type="text" maxlength="10000" bindinput="fault1_input" placeholder="请输入详细故障信息">{{fault1_detail}}</input>
+			<input class="guzhangInput" type="text" maxlength="10000" bindinput="fault1_input" placeholder="请输入详细故障信息" value="{{fault1_detail}}"></input>
 		</view>
 
 		<view class="guzhang">故障记录2
@@ -93,6 +93,7 @@
 
 		<button class="submitButton" type="primary" bindtap="Local_storage">本地存储</button>
 
+<button class="submitButton" type="primary" bindtap="Read_Local_storage">载入数据</button>
 
 		<button class="submitButton" type="primary" formType="submit">提交</button>
 

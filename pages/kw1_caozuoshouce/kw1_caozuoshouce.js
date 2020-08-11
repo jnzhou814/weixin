@@ -2,9 +2,6 @@
 let app = getApp()
 const db = wx.cloud.database()
 const kw1_caozuoshouceDB = db.collection('kw1_caozuoshouce')
-let 工序 = null
-let 产量 = null
-let 日期 = null
 
 Page({
 
@@ -14,19 +11,19 @@ Page({
   data: {
     shebeiarray: ['AF10', 'AF20A', 'AF20B', 'AF20C', 'AF30A', 'AF40B', 'AF40', 'AF60', 'AF70', 'AF80', 'AF90A', 'AF90B', 'AF90C', 'AF100', 'AF110', 'AF130', 'AF140', 'AF150', 'AF160', 'AF170'],
     kwModearray: ["Gen3 1.8T", "Gen3 2.0T", "Gen3 BZ"],
-    chanliang: "",
+    chanliang: null,
     DateTime: "",
     // index0是工序选择的index
     index0: 0,
     //index1是选择轴型
     index1: 0,
     huanxing_status: false,
-    fault1_start_time:"",
-    fault1_end_time:"",
-    fault1_detail:"",
-    fault2_start_time:"",
-    fault2_end_time:"",
-    fault2_detail:"",
+    fault1_start_time: "",
+    fault1_end_time: "",
+    fault1_detail: "",
+    fault2_start_time: "",
+    fault2_end_time: "",
+    fault2_detail: "",
 
 
     AF160_switch: false,
@@ -57,9 +54,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
-  },
+  onLoad: function (options) {},
   chanliangInput: function (e) {
     this.setData({
       chanliang: e.detail.value
@@ -80,9 +75,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
-  },
+  onShow: function () {},
 
   /**
    * 生命周期函数--监听页面隐藏
@@ -117,6 +110,28 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  Local_storage: function (e) {
+    wx.setStorage({
+      data: {
+        chanliang: this.data.chanliang,
+        fault1_detail: this.data.fault1_detail
+      },
+      key: 'local_data',
+    })
+  },
+  Read_Local_storage: function (e) {
+    var that = this
+    var value = wx.getStorageSync('local_data')
+    if (value) {
+      console.log(value.chanliang)
+      console.log(value.fault1_detail)
+      that.setData({
+        chanliang: value.chanliang,
+        fault1_detail: value.fault1_detail
+      })
+
+    }
   },
   bindShebeiChange: function (e) {
     console.log('选择工序', e.detail.value)
@@ -190,12 +205,11 @@ Page({
       fault1_end_time: e.detail.value
     })
   },
-  fault1_input:function(e){
+  fault1_input: function (e) {
     this.setData({
-      fault1_detail:e.detail.value
+      fault1_detail: e.detail.value
     })
-  }
-  ,
+  },
   fault2_start_time_picker: function (e) {
     console.log('时间选择', e.detail.value)
     this.setData({
@@ -208,49 +222,45 @@ Page({
       fault2_end_time: e.detail.value
     })
   },
-  fault2_input:function(e){
+  fault2_input: function (e) {
     this.setData({
-      fault2_detail:e.detail.value
+      fault2_detail: e.detail.value
     })
-  }
-  ,
+  },
   caozuoshocesubmit: function (e) {
     kw1_caozuoshouceDB.add({
-      data: {
-        "工序": this.data.shebeiarray[this.data.index0],
-        "产量": Number(this.data.chanliang),
-        "日期": Date(this.data.DateTime),
-        "轴型": this.data.kwModearray[this.data.index1],
-        "安全及5S": this.data.testarray[0]["status"],
-        "质量状况": this.data.testarray[1]["status"],
-        "设备和能源": this.data.testarray[2]["status"],
-        "换刀状态": this.data.testarray[3]["status"],
-        "换型状态": this.data.huanxing_status,
-        "故障1开始时间":(this.data.fault1_start_time),
-        "故障1结束时间":this.data.fault1_end_time,
-        "故障1详情":this.data.fault1_detail,
-        "故障2开始时间":this.data.fault2_start_time,
-        "故障2结束时间":this.data.fault2_end_time,
-        "故障2详情":this.data.fault2_detail,
-      },
-      success: function () {
-        //提交成功然后跳转到主界面
-        wx.showToast({
-          title: '提交成功!',
-          duration: 1500,
-          success: function () {
-            setTimeout(function () {
-              wx.navigateTo({
-                url: '../index/index'
-              })
-            }, 1000);
-          }
-        })
-      }
-
-    })
-
-
-
+        data: {
+          "工序": this.data.shebeiarray[this.data.index0],
+          "产量": Number(this.data.chanliang),
+          "日期": Date(this.data.DateTime),
+          "轴型": this.data.kwModearray[this.data.index1],
+          "安全及5S": this.data.testarray[0]["status"],
+          "质量状况": this.data.testarray[1]["status"],
+          "设备和能源": this.data.testarray[2]["status"],
+          "换刀状态": this.data.testarray[3]["status"],
+          "换型状态": this.data.huanxing_status,
+          "故障1开始时间": (this.data.fault1_start_time),
+          "故障1结束时间": this.data.fault1_end_time,
+          "故障1详情": this.data.fault1_detail,
+          "故障2开始时间": this.data.fault2_start_time,
+          "故障2结束时间": this.data.fault2_end_time,
+          "故障2详情": this.data.fault2_detail,
+        },
+        success: function () {
+          //提交成功然后跳转到主界面
+          wx.showToast({
+            title: '提交成功!',
+            duration: 1500,
+            success: function () {
+              setTimeout(function () {
+                wx.navigateTo({
+                  url: '../index/index'
+                })
+              }, 1000);
+            }
+          })
+        }
+      }),
+      wx.clearStorageSync()
   }
 })
