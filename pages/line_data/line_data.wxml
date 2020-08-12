@@ -1,3 +1,28 @@
 <!--pages/line_data/line_data.wxml-->
-<text>pages/line_data/line_data.wxml</text>
-<view>这里可以查看生产线的一些数据，如出勤公告、近期产量等</view>
+<form bindsubmit="chaxun">
+
+	
+		<picker class="item" bindchange="Table_select" value="{{Table_index}}" range="{{Table}}">
+			
+				选择查询表格:{{Table[Table_index]}}
+		</picker>
+	
+
+	
+		<picker class="item" mode="date" bindchange="bindDateChange_start">
+			<view>开始日期:{{DateTime_start}}</view>
+		</picker>
+
+	
+		<picker class="item" mode="date" bindchange="bindDateChange_end">
+			<view>结束日期:{{DateTime_end}}</view>
+		</picker>
+	
+		<picker class="item" bindchange="bindShebeiChange" value="{{shebei_index}}" range="{{shebeiarray}}">
+			<view> 选择工序：{{shebeiarray[shebei_index]}}</view>
+		</picker>
+	
+
+	<button class="submitButton" type="primary" formType="submit">提交</button>
+
+</form>

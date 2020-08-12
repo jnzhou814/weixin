@@ -39,8 +39,7 @@ Page({
   },
   login: function (a) {
     var that = this
-    console.log(this.data.user_ID_local)
-    console.log(this.data.user_password_local)
+
     if (this.data.user_ID_local.length == 0 || this.data.user_password_local.length == 0) {
       wx.showModal({
         title: '提示',
@@ -49,21 +48,22 @@ Page({
     } else {
       user_infoDB.where({
         user_ID: that.data.user_ID_local
-      }).get({
-        success: function (res) {
-          if (that.data.user_password_local == res.data[0].user_password) {
-            wx.redirectTo({
-              url: '../index/index',
-            })
-          } else {
-            console.log(user_infoDB.where({
-              user_ID: that.data.user_ID_local
-            }))
-            wx.showModal({
-              title: '密码错误',
-              content: "密码错误"
-            });
-          }
+      }).get().then(res => {
+        if (res.data.length == 0) {
+          wx.showModal({
+            content: "用户名不存在,请确认"
+          })
+        } else if (that.data.user_password_local == res.data[0].user_password) {
+          wx.redirectTo({
+            url: '../index/index',
+          })
+        } else {
+          console.log(user_infoDB.where({
+            user_ID: that.data.user_ID_local
+          }))
+          wx.showModal({
+            content: "密码错误"
+          })
         }
       })
     }

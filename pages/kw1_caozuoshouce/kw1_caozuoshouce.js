@@ -24,7 +24,8 @@ Page({
     fault2_start_time: "",
     fault2_end_time: "",
     fault2_detail: "",
-
+    beizhu: "",
+    
 
     AF160_switch: false,
     testarray: [{
@@ -54,7 +55,30 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {},
+  onLoad: function (options) {
+    var that = this
+    var value = wx.getStorageSync('local_data_caozuoshouce')
+    if (value) {
+      that.setData({
+        chanliang: value.chanliang,
+        fault1_detail: value.fault1_detail,
+        DateTime:value.Date_Time,
+        index0:value.index0,
+        index1:value.index1,
+        fault1_detail: value.fault1_detail,
+        fault1_start_time:value.fault1_start_time,
+        fault1_end_time:value.fault1_end_time,
+        fault2_detail: value.fault2_detail,
+        fault2_start_time:value.fault2_start_time,
+        fault2_end_time:value.fault2_end_time,
+        beizhu:value.beizhu
+
+      })
+
+    }
+
+
+  },
   chanliangInput: function (e) {
     this.setData({
       chanliang: e.detail.value
@@ -114,25 +138,22 @@ Page({
   Local_storage: function (e) {
     wx.setStorage({
       data: {
+        index0:this.data.index0,
+        index1:this.data.index1,
+        Date_Time: this.data.DateTime,
         chanliang: this.data.chanliang,
-        fault1_detail: this.data.fault1_detail
+        fault1_detail: this.data.fault1_detail,
+        fault1_start_time:this.data.fault1_start_time,
+        fault1_end_time:this.data.fault1_end_time,
+        fault2_detail: this.data.fault2_detail,
+        fault2_start_time:this.data.fault2_start_time,
+        fault2_end_time:this.data.fault2_end_time,
+        beizhu:this.data.beizhu
       },
-      key: 'local_data',
+      key: 'local_data_caozuoshouce',
     })
   },
-  Read_Local_storage: function (e) {
-    var that = this
-    var value = wx.getStorageSync('local_data')
-    if (value) {
-      console.log(value.chanliang)
-      console.log(value.fault1_detail)
-      that.setData({
-        chanliang: value.chanliang,
-        fault1_detail: value.fault1_detail
-      })
-
-    }
-  },
+ 
   bindShebeiChange: function (e) {
     console.log('选择工序', e.detail.value)
     if (e.detail.value == 18) {
@@ -172,10 +193,6 @@ Page({
     this.setData({
       testarray
     })
-    console.log(e.detail.value)
-    console.log(index)
-    console.log(status)
-    console.log(testarray[index])
 
   },
   kwModeChange: function (e) {
@@ -227,6 +244,11 @@ Page({
       fault2_detail: e.detail.value
     })
   },
+  beizhu_input: function (e) {
+    this.setData({
+      beizhu: e.detail.value
+    })
+  },
   caozuoshocesubmit: function (e) {
     kw1_caozuoshouceDB.add({
         data: {
@@ -261,6 +283,6 @@ Page({
           })
         }
       }),
-      wx.clearStorageSync()
+      wx.clearStorageSync("local_data_caozuoshouce")
   }
 })

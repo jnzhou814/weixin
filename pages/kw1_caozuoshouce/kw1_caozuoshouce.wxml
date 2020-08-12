@@ -88,12 +88,13 @@
 			<picker mode="time" bindchange="fault2_end_time_picker">
 				<view class="timepicker">故障结束时间:{{fault2_end_time}}</view>
 			</picker>
-			<input class="guzhangInput" type="text" maxlength="10000" bindinput="fault2_input" placeholder="请输入详细故障信息">{{fault2_detail}}</input>
+			<input class="guzhangInput" type="text" maxlength="10000" bindinput="fault2_input" value="{{fault2_detail}}" placeholder="请输入详细故障信息"></input>
 		</view>
 
-		<button class="submitButton" type="primary" bindtap="Local_storage">本地存储</button>
+		<view>
+			<input class="beizhu" type="text" maxlength="10000" bindinput="beizhu_input" value="{{beizhu}}" placeholder="其余需要备注的请填写"></input></view>
 
-<button class="submitButton" type="primary" bindtap="Read_Local_storage">载入数据</button>
+		<button class="submitButton" type="default" bindtap="Local_storage">数据缓存</button>
 
 		<button class="submitButton" type="primary" formType="submit">提交</button>
 

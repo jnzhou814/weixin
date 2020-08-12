@@ -1,22 +1,22 @@
 <!--pages/input/input.wxml-->
-<text>各种记录输入页面</text>
+
 <view class="page">
 	<view class="types">设备类
 		<view class='type_items' bindtap="nvToCaozuoshouce"> 操作手册</view>
-		<view class='type_items'>点检记录</view>
-		<view class='type_items'>换刀记录</view>
+		<view class='type_items'>点检记录_待添加</view>
+		<view class='type_items'>换刀记录_待添加</view>
 		<view class='type_items'>待添加</view>
 	</view>
 
 	<view class="types">质量
-		<view class='type_items'>检验记录</view>
-		<view class='type_items'>AF10上料记录</view>
+		<view class='type_items'>检验记录_待添加</view>
+		<view class='type_items'>AF10上料记录_待添加</view>
 		<view class='type_items'>待添加</view>
 	</view>
 
 	<view class="types">安全
-		<view class='type_items'>安全锁定</view>
-		<view class='type_items'>安全申请表</view>
+		<view class='type_items'>安全锁定_待添加</view>
+		<view class='type_items'>安全申请表_待添加</view>
 		<view class='type_items'>待添加</view>
 	</view>
 </view>

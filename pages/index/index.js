@@ -24,7 +24,7 @@ Page({
       {
         "iconClass": "../../picture/chart.png",
         "iconClass_active": "../../picture/chart_active.png",
-        "text": "产线数据",
+        "text": "数据查询",
         "tapFunction": "toLineData",
         "active": ""
       },

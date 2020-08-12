@@ -1,3 +1,6 @@
 <!--pages/my_profile/my_profile.wxml-->
-<text>pages/my_profile/my_profile.wxml</text>
-<view>个人相关信息，可以修改密码，查看自己最近的输入</view>
+<view>姓名</view>
+<view>工号</view>
+<view>车间</view>
+<view>生产线</view>
+<view>修改密码</view>
