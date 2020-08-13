@@ -1,28 +1,55 @@
 <!--pages/line_data/line_data.wxml-->
 <form bindsubmit="chaxun">
 
-	
-		<picker class="item" bindchange="Table_select" value="{{Table_index}}" range="{{Table}}">
-			
-				选择查询表格:{{Table[Table_index]}}
-		</picker>
-	
 
-	
-		<picker class="item" mode="date" bindchange="bindDateChange_start">
-			<view>开始日期:{{DateTime_start}}</view>
-		</picker>
+	<picker class="item" bindchange="Table_select" value="{{Table_index}}" range="{{Table}}">
 
-	
-		<picker class="item" mode="date" bindchange="bindDateChange_end">
-			<view>结束日期:{{DateTime_end}}</view>
-		</picker>
-	
-		<picker class="item" bindchange="bindShebeiChange" value="{{shebei_index}}" range="{{shebeiarray}}">
-			<view> 选择工序：{{shebeiarray[shebei_index]}}</view>
-		</picker>
-	
+		选择查询表格:{{Table[Table_index]}}
+	</picker>
 
-	<button class="submitButton" type="primary" formType="submit">提交</button>
+
+
+	<picker class="item" mode="date" bindchange="bindDateChange_start">
+		<view>开始日期:{{DateTime_start}}</view>
+	</picker>
+
+
+	<picker class="item" mode="date" bindchange="bindDateChange_end">
+		<view>结束日期:{{DateTime_end}}</view>
+	</picker>
+
+	<picker class="item" bindchange="bindShebeiChange" value="{{shebei_index}}" range="{{shebeiarray}}">
+		<view> 选择工序：{{shebeiarray[shebei_index]}}</view>
+	</picker>
+
+
+	<button class="submitButton" type="primary" formType="submit">查询</button>
 
 </form>
+
+<!-- 下面是修改日期的模板 -->
+<wxs module="formatTime">
+	var formatTimeCoupon = function(times) {
+		var date = getDate((times));
+		var year = date.getFullYear()
+		var month = date.getMonth() + 1
+		var day = date.getDate()
+		var hour = date.getHours()
+		var minutes = date.getMinutes()
+		month = month > 9 ? month : '0' + month
+		day = day > 9 ? day : '0' + day
+		return year + '.' + month + '.' + day + " " + hour + ":" + minutes
+	}
+	module.exports = {
+		formatTimeCoupon: formatTimeCoupon
+	}
+</wxs>
+<!-- 上面是修改日期的模板 -->
+
+<view wx:for="{{chaxundata}}">
+	<view>第{{index+1}}条记录</view>
+	<view>产量:{{item["产量"]}}</view>
+	<view>日期:{{formatTime.formatTimeCoupon(item["日期string"])}}</view>
+	<view>轴型:{{item["轴型"]}}</view>
+	<view>----------------</view>
+</view>

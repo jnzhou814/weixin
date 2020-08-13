@@ -254,7 +254,8 @@ Page({
         data: {
           "工序": this.data.shebeiarray[this.data.index0],
           "产量": Number(this.data.chanliang),
-          "日期": Date(this.data.DateTime),
+          "日期": new Date(this.data.DateTime).getTime(),
+          "日期string": Date(this.data.DateTime),
           "轴型": this.data.kwModearray[this.data.index1],
           "安全及5S": this.data.testarray[0]["status"],
           "质量状况": this.data.testarray[1]["status"],

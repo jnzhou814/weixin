@@ -4,7 +4,11 @@ const db = wx.cloud.database()
 const userlistDB = db.collection('kw1_user_info')
 const userlist_allown = db.collection('KW1_allowned')
 
-
+let chejian = null
+let line = null
+let user_ID = null
+let user_name = null
+let user_password = null
 
 
 Page({
@@ -33,44 +37,35 @@ Page({
         icon: 'loading',
         duration: 1500
       })
-    } else(userlist_allown.where({
-      'user_ID':Number(e.detail.value.user_id)
-    }).get().then(res => {
-      console.log(res)
-      console.log(e.detail.value.user_id)
-      console.log(new Number(e.detail.value.user_id))
-      console.log(Number(e.detail.value.user_id))
-      if (res.data.length == 0) {
-        wx.showModal({
-          content: "你的工号不允许注册"
-        })
-      } else {
-        userlistDB.add({
-          data: {
-            "chejian": this.data.multiArray[0][this.data.multiIndex[0]],
-            "line": this.data.multiArray[1][this.data.multiIndex[1]],
-            "user_ID": (e.detail.value.user_id),
-            "user_name": e.detail.value.user_name,
-            "user_password": e.detail.value.password,
-          },
-          success: function () {
-            //显示注册成功然后跳转到登录页面
-            wx.showToast({
-              title: '注册成功!',
-              duration: 1500,
-              success: function () {
-                setTimeout(function () {
-                  wx.navigateTo({
-                    url: '../denglu/denglu'
-                  })
-                }, 1000);
-              }
-            })
-          }
-        })
-      }
-    }))
-
+    } 
+    
+ 
+    
+     else {
+      userlistDB.add({
+        data: {
+          "chejian": this.data.multiArray[0][this.data.multiIndex[0]],
+          "line": this.data.multiArray[1][this.data.multiIndex[1]],
+          "user_ID": (e.detail.value.user_id),
+          "user_name": e.detail.value.user_name,
+          "user_password": e.detail.value.password,
+        },
+        success: function () {
+          //显示注册成功然后跳转到登录页面
+          wx.showToast({
+            title: '注册成功!',
+            duration: 1500,
+            success: function () {
+              setTimeout(function () {
+                wx.navigateTo({
+                  url: '../denglu/denglu'
+                })
+              }, 1000);
+            }
+          })
+        }
+      })
+    }
   },
   bindMultiPickerColumnChange: function (e) {
     var data = {

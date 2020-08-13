@@ -1,7 +1,7 @@
 /* pages/line_data/line_data.wxss */
 .item {
   height: 100%;
-  padding: 5px;
+  padding: 3px;
   margin: 10px;
   width: 85vw;
   align-items: center;
