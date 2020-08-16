@@ -21,9 +21,9 @@ Page({
   },
   //读取form里面的data，然后提交网络数据库
   formSubmit: function (e) {
-    if (e.detail.value.user_id.length == 0 || e.detail.value.user_name.length == 0) {
+    if (e.detail.value.user_id.length == 0 || e.detail.value.user_name.length == 0||e.detail.value.password.length==0||e.detail.value.password1.length==0) {
       wx.showModal({
-        title: '工号不能为空',
+        title: '填写所有信息',
         icon: 'loading',
         duration: 1500
       })
@@ -34,41 +34,46 @@ Page({
         duration: 1500
       })
     } else(userlist_allown.where({
-      'user_ID':Number(e.detail.value.user_id)
+      'user_ID': Number(e.detail.value.user_id)
     }).get().then(res => {
-      console.log(res)
-      console.log(e.detail.value.user_id)
-      console.log(new Number(e.detail.value.user_id))
-      console.log(Number(e.detail.value.user_id))
       if (res.data.length == 0) {
         wx.showModal({
           content: "你的工号不允许注册"
         })
-      } else {
-        userlistDB.add({
-          data: {
-            "chejian": this.data.multiArray[0][this.data.multiIndex[0]],
-            "line": this.data.multiArray[1][this.data.multiIndex[1]],
-            "user_ID": (e.detail.value.user_id),
-            "user_name": e.detail.value.user_name,
-            "user_password": e.detail.value.password,
-          },
-          success: function () {
-            //显示注册成功然后跳转到登录页面
-            wx.showToast({
-              title: '注册成功!',
-              duration: 1500,
-              success: function () {
-                setTimeout(function () {
-                  wx.navigateTo({
-                    url: '../denglu/denglu'
-                  })
-                }, 1000);
-              }
-            })
-          }
-        })
-      }
+      } else(userlistDB.where({
+        "user_ID": e.detail.value.user_id
+      }).get().then(res => {
+        if (res.data.length !== 0) {
+          wx.showModal({
+            content: "你的工号已经注册，请登录或联系管理员"
+          })
+
+        } else {
+          userlistDB.add({
+            data: {
+              "chejian": this.data.multiArray[0][this.data.multiIndex[0]],
+              "line": this.data.multiArray[1][this.data.multiIndex[1]],
+              "user_ID": (e.detail.value.user_id),
+              "user_name": e.detail.value.user_name,
+              "user_password": e.detail.value.password,
+            },
+            success: function () {
+              //显示注册成功然后跳转到登录页面
+              wx.showToast({
+                title: '注册成功!',
+                duration: 1500,
+                success: function () {
+                  setTimeout(function () {
+                    wx.navigateTo({
+                      url: '../denglu/denglu'
+                    })
+                  }, 1000);
+                }
+              })
+            }
+          })
+        }
+      }))
     }))
 
   },

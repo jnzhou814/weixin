@@ -43,7 +43,8 @@ Page({
   tabChange(e) {
     console.log('tab change', e)
 
-  },
+  }
+  ,
   toInput() {
     this.setData({
       nowPage: "firstPage",
@@ -68,14 +69,19 @@ Page({
       nowPage: "forthPage",
       nowIndex: 3
     })
+    let myComponent = this.selectComponent('#forthPage');
+    myComponent.onLoad()
+    console.log(myComponent) // 页面获取自定义组件实例
   },
 
-  
+
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
+    
 
   },
 

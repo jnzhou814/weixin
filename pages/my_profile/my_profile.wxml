@@ -1,6 +1,6 @@
 <!--pages/my_profile/my_profile.wxml-->
-<view>姓名</view>
-<view>工号</view>
-<view>车间</view>
-<view>生产线</view>
+<view class="item_style">姓名{{name}}</view>
+<view class="item_style">工号{{ID}}</view>
+<view class="item_style">车间{{chejian}}</view>
+<view class="item_style">生产线{{line}}</view>
 <view>修改密码</view>

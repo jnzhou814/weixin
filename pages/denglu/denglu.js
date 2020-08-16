@@ -11,7 +11,8 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     user_ID_local: "",
-    user_password_local: ""
+    user_password_local: "",
+    user_id:""
   },
   //事件处理函数
   bindViewTap: function () {
@@ -56,7 +57,13 @@ Page({
         } else if (that.data.user_password_local == res.data[0].user_password) {
           wx.redirectTo({
             url: '../index/index',
-          })
+          }, wx.setStorage({
+            data: {
+              user_id:this.data.user_ID_local,
+              
+            },
+            key: 'user_id',
+          }))
         } else {
           console.log(user_infoDB.where({
             user_ID: that.data.user_ID_local

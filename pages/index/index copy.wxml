@@ -22,8 +22,8 @@
 </view>
 <!-- 页面容器 -->
 <view class="container">
-	<firstPage id="firstPage" wx:if="{{nowPage=='firstPage'}}"></firstPage>
-	<secondPage id="secondPage" wx:if="{{nowPage=='secondPage'}}"></secondPage>
-	<thirdPage id="thirdPage" wx:if="{{nowPage=='thirdPage'}}"></thirdPage>
-	<forthPage id="forthPage" wx:if="{{nowPage=='forthPage'}}"></forthPage>
+	<firstPage wx:if="{{nowPage=='firstPage'}}"></firstPage>
+	<secondPage wx:if="{{nowPage=='secondPage'}}"></secondPage>
+	<thirdPage wx:if="{{nowPage=='thirdPage'}}"></thirdPage>
+	<forthPage wx:if="{{nowPage=='forthPage'}}"></forthPage>
 </view>

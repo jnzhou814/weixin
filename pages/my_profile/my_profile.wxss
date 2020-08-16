@@ -1,1 +1,11 @@
 /* pages/my_profile/my_profile.wxss */
+.item_style{
+  
+  height: 100%;
+  padding: 3px;
+  margin: 10px;
+  width: 85vw;
+  align-items: center;
+  background-color: rgba(220, 220, 220, 0.851);
+  
+}

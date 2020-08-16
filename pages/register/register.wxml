@@ -10,7 +10,7 @@
 
 	</picker>
 
-	<input class='input'  name='user_id' placeholder="工号">工号</input>
+	<input class='input' type="number" name='user_id' placeholder="工号">工号</input>
 	<input class='input' name='user_name' placeholder="姓名" >姓名</input>
 	<input class='input' name='password' placeholder="密码" password>密码</input>
 	<input class='input' name='password1' placeholder="密码确认" password>确认密码</input>
