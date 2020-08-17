@@ -19,10 +19,11 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+  
   onLoad: function (options) {
     var that=this
     var value = wx.getStorageSync('user_full_info')
-    if (value) {
+    if (value.ID==wx.getStorageSync('user_id').user_id) {
       that.setData({
         name: value.name,
         chejian: value.chejian,
@@ -30,7 +31,7 @@ Page({
         ID:value.ID
 
       })
-    } else {
+    } else{
       var user_id = wx.getStorageSync('user_id').user_id
       kw1_user_infoDB.where({
         "user_ID": user_id
@@ -41,7 +42,7 @@ Page({
             chejian: res.data[0].chejian,
             line: res.data[0].line,
             ID: res.data[0].user_ID
-
+  
           },
           key: 'user_full_info',
         })
@@ -51,8 +52,7 @@ Page({
           line: res.data[0].line,
           ID: res.data[0].user_ID
         })
-      })
-    }
+      })}
   },
 
   /**

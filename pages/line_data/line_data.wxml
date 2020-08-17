@@ -45,11 +45,12 @@
 	}
 </wxs>
 <!-- 上面是修改日期的模板 -->
-
-<view wx:for="{{chaxundata}}">
-	<view>第{{index+1}}条记录</view>
-	<view>产量:{{item["产量"]}}</view>
-	<view>日期:{{formatTime.formatTimeCoupon(item["日期string"])}}</view>
-	<view>轴型:{{item["轴型"]}}</view>
-	<view>----------------</view>
-</view>
+<scroll-view style="height: 800rpx;" scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll">
+	<view wx:for="{{chaxundata}}">
+		<view>第{{index+1}}条记录</view>
+		<view>产量:{{item["产量"]}}</view>
+		<view>日期:{{formatTime.formatTimeCoupon(item["日期string"])}}</view>
+		<view>轴型:{{item["轴型"]}}</view>
+		<view>----------------</view>
+	</view>
+</scroll-view>

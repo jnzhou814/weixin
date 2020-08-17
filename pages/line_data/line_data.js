@@ -2,7 +2,7 @@
 
 let app = getApp()
 const db = wx.cloud.database()
-const _=db.command
+const _ = db.command
 
 Page({
 
@@ -101,8 +101,8 @@ Page({
   },
   chaxun: function (e) {
     var that = this
-    var DateTime_start=new Date(this.data.DateTime_start).getTime()
-    var DateTime_end=new Date(this.data.DateTime_end).getTime()
+    var DateTime_start = new Date(this.data.DateTime_start).getTime()
+    var DateTime_end = new Date(this.data.DateTime_end).getTime()
     db.collection(that.data.database_name[that.data.Table_index]).where({
       "工序": that.data.shebeiarray[that.data.shebei_index]
     }).where({
@@ -115,9 +115,8 @@ Page({
         })
       } else {
         that.setData({
-            chaxundata: res.data
-          }
-        )
+          chaxundata: res.data
+        })
       }
     })
   }

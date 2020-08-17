@@ -70,6 +70,7 @@ Page({
       nowIndex: 3
     })
     let myComponent = this.selectComponent('#forthPage');
+    
     myComponent.onLoad()
     console.log(myComponent) // 页面获取自定义组件实例
   },
@@ -96,6 +97,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    wx.hideHomeButton( )
 
   },
 

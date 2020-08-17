@@ -1,6 +1,23 @@
 <!--pages/my_profile/my_profile.wxml-->
-<view class="item_style">姓名{{name}}</view>
-<view class="item_style">工号{{ID}}</view>
-<view class="item_style">车间{{chejian}}</view>
-<view class="item_style">生产线{{line}}</view>
-<view>修改密码</view>
+
+<view class="title">个人信息</view>
+<view class="item_style">
+	<view class="item_name">姓名</view>
+	<view class="item_value">{{name}}</view>
+</view>
+
+<view class="item_style">
+	<view class="item_name">工号</view>
+	<view class="item_value">{{ID}}</view>
+</view>
+
+<view class="item_style">
+	<view class="item_name">车间</view>
+	<view class="item_value">{{chejian}}</view>
+</view>
+
+<view class="item_style">
+	<view class="item_name">生产线</view>
+	<view class="item_value">{{line}}</view>
+</view>
+<view class="more">更多功能待开发</view>

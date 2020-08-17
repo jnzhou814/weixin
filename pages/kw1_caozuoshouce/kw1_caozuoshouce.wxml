@@ -14,13 +14,13 @@
 		</view>
 
 		<view style="margin:10px">产量
-			<input bindinput="chanliangInput" class="textinput" type="digit" value="{{chanliang}}"></input>
+			<input bindinput="chanliangInput" class="textinput" type="digit" placeholder="输入产量" value="{{chanliang}}"></input>
 		</view>
 
 		<!-- 选择日期 -->
 		<view>
 			<picker class="datapicker" mode="date" bindchange="bindDateChange">
-				<view>填表日期:{{DateTime}}</view>
+				<view >填表日期:{{DateTime}}</view>
 			</picker>
 		</view>
 
